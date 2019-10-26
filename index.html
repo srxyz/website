@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="anime.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description" content="Sam Rechsteiner"/>
+		<meta name="title" content="Sam Rechsteiner"/>
+		<style>
+			html{
+				width:100%;
+				height:100%;
+				margin:auto;
+				display:table;
+			}
+			ul{
+				list-style:none;
+				padding:0;
+			}
+			li{margin:1em;}
+			img{width:40px;}
+			a{color:white;}
+			h2{font-weight:normal;}
+			body{
+				color:white;
+				display:table-cell;
+				vertical-align:middle;
+				text-align:center;
+				margin:auto;
+				font-family:sans-serif;
+				background-color: #252524;
+			}
+			.wrapper {
+				position: relative;
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				width: 1px;
+				height: 100vh;
+			}
+		    	.el { position: absolute; opacity: 1; width: 2px; height: 24vh; margin-top: -12vh; transform-origin: 50% 100%; background: white; } 
+			@media only screen and (max-width:600px){body{width:90%;}}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper"></div>
+		<h1>Hi, I'm Sam Rechsteiner.</h1>
+		<h2>Rex(as in T-Rex)-steiner</h2>
+		<ul>
+			<li><a href="about.html">About</a></li>
+			<li><a href="https://github.com/srxyz"><img src="github.png" alt="My Github Page"></a></li>
+		</ul>
+		<script>
+		   const wrapperEl = document.querySelector('.wrapper');
+		   const numberOfEls = 90;
+		   const duration = 6000;
+		   const delay = duration / numberOfEls;
+		   let tl = anime.timeline({
+			   duration: delay,
+			   complete: function() { tl.restart(); }
+		   });
+		   function createEl(i) {
+			   let el = document.createElement('div');
+			   const rotate = (360 / numberOfEls) * i;
+			   const translateY = -50;
+			   const hue = Math.round(360 / numberOfEls * i);
+			   el.classList.add('el');
+			   el.style.backgroundColor = 'hsl(' + hue + ', 40%, 60%)';
+			   el.style.transform = 'rotate(' + rotate + 'deg) translateY(' + translateY + '%)';
+			   tl.add({
+				   begin: function() {
+					   anime({
+						   targets: el,
+						   backgroundColor: ['hsl(' + hue + ', 40%, 60%)', 'hsl(' + hue + ', 60%, 80%)'],
+						   rotate: [rotate + 'deg', rotate + 10 +'deg'],
+						   translateY: [translateY + '%', translateY + 10 + '%'],
+						   scale: [1, 1.25],
+						   easing: 'easeInOutSine',
+						   direction: 'alternate',
+						   duration: duration * .1
+					   });
+				   }
+			   });
+			   wrapperEl.appendChild(el);
+		 };
+		for (let i = 0; i < numberOfEls; i++) createEl(i);
+		</script>
+	</body>
+</html>
