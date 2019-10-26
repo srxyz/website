@@ -55,12 +55,10 @@ body {
 
 @media only screen and (max-width:600px){
   .wrapper {
-    height: 50vh;
-    bottom: 0;
+    transform: rotate(90deg);
   }
+
   main {
-    margin-top: 0;
     width: 90%;
-    height: 25%;
   }
 }
