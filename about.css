@@ -1,0 +1,45 @@
+li {
+  margin:1em;
+}
+
+html, body {
+  background: #252524;
+}
+
+main {
+	width: 75%;
+  background: white;
+  padding: 2em;
+  margin: 2em;
+  box-shadow: 0 0 45px black;
+}
+
+img {
+	width: 40%;
+	float: right;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  box-shadow: 10px 10px 15px grey;
+}
+
+content {
+	font-family: sans-serif;
+	color: black;
+  width: 40%;
+}
+
+hr {
+	margin-right:20px;
+}
+
+@media only screen and (max-width:600px) {
+  body {
+    width:90%;
+  }
+
+  img {
+    float:none;
+    margin: 0;
+    width: 100%;
+  }
+}
